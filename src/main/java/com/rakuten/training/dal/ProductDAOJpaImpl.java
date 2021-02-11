@@ -41,6 +41,13 @@ public class ProductDAOJpaImpl implements ProductDAO {
 
 	@Override
 	public void deleteById(int id) {
+		
+		Query q = em.createQuery("DELETE FROM Review r WHERE r.product.id=:pid");
+		q.setParameter("pid", id);
+		int numReviewsDeleted = q.executeUpdate();
+		System.out.println("<<<<<Deleted :"+numReviewsDeleted+" before deleting the product");
+		
+		
 		Product p = em.find(Product.class, id);
 		em.remove(p);
 		

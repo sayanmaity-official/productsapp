@@ -37,8 +37,8 @@ public class ProductServiceImpl implements ProductService {
 		if(existing == null) {
 			throw new IllegalArgumentException("product with id "+id+" not found!");
 		}
-		if(existing.getPrice() * existing.getQoh() >= 100000) {
-			throw new IllegalStateException("Can't delete product when stock >= 100k");
+		if(existing.getPrice() * existing.getQoh() >= 10000000) {
+			throw new IllegalStateException("Can't delete product when stock >= 10000k");
 		}
 		dao.deleteById(id);
 		

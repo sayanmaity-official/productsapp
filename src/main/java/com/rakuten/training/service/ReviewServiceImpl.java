@@ -2,6 +2,9 @@ package com.rakuten.training.service;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +23,9 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Autowired
 	ProductDAO productDAO;
+	
+	@Autowired
+	EntityManager em;
 
 	@Override
 	public Review addReviewToProduct(Review r, int productId) {
@@ -28,6 +34,7 @@ public class ReviewServiceImpl implements ReviewService {
 
 		r.setProduct(p);
 		return reviewDAO.save(r);
+		
 
 	}
 
@@ -43,6 +50,12 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public List<Review> findByProduct_Id(int pid) {
 		return reviewDAO.findByProduct_Id(pid);
+	}
+	
+	@Override
+	public List<Review> findAll() {
+		Query q = em.createQuery("select r from Review as r ");
+		return q.getResultList();
 	}
 
 }

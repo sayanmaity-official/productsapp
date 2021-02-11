@@ -2,6 +2,7 @@ package com.rakuten.training.service;
 
 import java.util.List;
 
+import com.rakuten.training.domain.Product;
 import com.rakuten.training.domain.Review;
 
 public interface ReviewService {
@@ -11,5 +12,7 @@ public interface ReviewService {
 	Review findById(int id);
 
 	List<Review> findByProduct_Id(int pid);
+
+	List<Review> findAll();
 
 }
