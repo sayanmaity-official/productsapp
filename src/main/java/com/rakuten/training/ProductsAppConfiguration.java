@@ -1,3 +1,5 @@
+//Configurationn using Java codes
+
 //package com.rakuten.training;
 //
 //import org.springframework.context.annotation.Bean;
